@@ -1,0 +1,45 @@
+---
+title: "BMI Calculator - Shiny Application"
+author: "Sushant Jaiswal"
+date: "April 16, 2019"
+output: ioslides_presentation
+---
+
+## Application Overview
+
+BMI Calculator is a Shiny application to calculate the Body Mass Index based on Height and Weight of an individual. The application takes the Height and Weight inputs through sliders. These inputs are used by BMI formula to calculate BMI. Then the BMI value is used to evaluate the Category based on the value ranges found on internet.
+
+## BMI Calculation
+This application takes Height in cm (centimetres) and Weight in kg (Kilograms) as inputs using a slider and provides the BMI value and the category it falls into. The BMI value is calculated by dividing the weight by square root of height, which is changed to meter unit by dividing by 100. So, the formula is-
+
+BMI = Weight/(Height/100)^2
+
+```{r warning=FALSE, message=FALSE, echo=TRUE}
+library(shiny)
+computeBMI <- function(weight, height){ 
+    round((weight/(height/100)^2), 1)
+}
+computeBMI(82,175)
+```
+
+## Category Evaluation
+Just the BMI value does not make much sense to an individual, so these values have been mapped to categories to understand the health status. The values used to define the categories in this application are taken from CDC site.
+
+- BMI less than 18.5 : Underwieght
+- BMI between 18.5 and 24.9 : Normal Weight
+- BMI between 25 and 29.9 : Overweight
+- BMI greater than 30 : Obese
+
+## References
+
+- Centers for Disease Control and Prevention
+
+https://www.cdc.gov/healthyweight/assessing/bmi/
+
+- Github
+
+https://github.com/
+
+- Wikipedia
+
+https://en.wikipedia.org/wiki/Body_mass_index
